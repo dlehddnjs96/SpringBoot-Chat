@@ -1,7 +1,20 @@
 let username = prompt("닉네임을 입력해주세요.😀");
 let roomNum = prompt("채팅방 번호를 입력해주세요.😀");
 
-document.querySelector("#username").innerHTML=username;
+// 채팅창 번호 정수만 받기
+if(Number.isInteger(parseInt(roomNum))){
+
+}else{
+    while(true){
+        roomNum = prompt("채팅방 번호를 정수로 입력해주세요.😀");
+        if(Number.isInteger(parseInt(roomNum))){
+            break;
+        }
+    }
+}
+
+
+document.querySelector("#username").innerHTML= `${username} (${roomNum}ROOM)`;
 
 // 몽고DB 연결서버에서 데이터 가져오기 (SSE 연결)
 const eventSource = new EventSource(`http://localhost:8080/chat/roomNum/${roomNum}`);
